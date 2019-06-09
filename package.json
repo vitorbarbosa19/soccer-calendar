@@ -1,0 +1,16 @@
+{
+  "name": "soccer-calendar",
+  "version": "1.0.0",
+  "description": "Soccer Calendar",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "Vitor Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0"
+  }
+}
