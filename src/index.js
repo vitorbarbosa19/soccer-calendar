@@ -1,5 +1,7 @@
 require('dotenv').config()
 const get = require('axios').get
+const calendarAPI = require('node-google-calendar')
+const settings = require('./settings')
 
 const getMatches = async () => {
 	const { data: { events } } = await get(`${process.env.URL}`)
@@ -17,6 +19,7 @@ const getMatches = async () => {
 		}
 	})
 	console.log(matches)
+	const calendar = new calendarAPI(settings)
 }
 
 getMatches()
