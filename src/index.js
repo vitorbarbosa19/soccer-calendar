@@ -21,11 +21,13 @@ try {
 				'colorId': '11'
 			}
 		})
-		//add loop to save all events to calendar
-		console.log(matches)
+		let responses = []
 		const calendar = new calendarAPI(settings)
-		const response = await calendar.Events.insert(process.env.CALENDAR_ID, matches[0])
-		console.log(response)
+		for (let index = 0; index < matches.length; index++) {
+			const { summary } = await calendar.Events.insert(process.env.CALENDAR_ID, matches[index])
+			responses.push(summary)
+		}
+		console.log(responses)
 	}
 	getMatches()
 } catch (error) {
