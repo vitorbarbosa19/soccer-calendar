@@ -4,8 +4,8 @@ const calendarAPI = require('node-google-calendar')
 const settings = require('./settings')
 const formatDateTime = require('./formatDateTime')
 
-try {
-	const getMatches = async () => {
+const getMatches = async () => {
+	try {
 		const { data: { events } } = await get(`${process.env.API_URL}`)
 		const matches = events.map(event => {
 			const [teamAway, teamHome] = event.name.split(' at ')
@@ -21,15 +21,19 @@ try {
 				'colorId': '11'
 			}
 		})
-		let responses = []
+		let response = []
 		const calendar = new calendarAPI(settings)
 		for (let index = 0; index < matches.length; index++) {
 			const { summary } = await calendar.Events.insert(process.env.CALENDAR_ID, matches[index])
-			responses.push(summary)
+			response.push(summary)
 		}
-		console.log(responses)
+		console.log(response)
+	} catch (error) {
+		if (error.response)
+			console.log(error.response)
+		else
+			console.log(error)
 	}
-	getMatches()
-} catch (error) {
-	console.log(error)
 }
+
+getMatches()
