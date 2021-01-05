@@ -10,7 +10,7 @@
   "author": "Vitor Barbosa",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.0.0",
     "moment-timezone": "^0.5.25",
     "node-google-calendar": "^1.1.1"
